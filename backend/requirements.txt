@@ -1,0 +1,11 @@
+"""
+Placeholder requirements file for the EchoTone backend.
+
+This file will eventually list concrete Python dependencies such as:
+- fastapi
+- uvicorn[standard]
+- httpx or requests
+- pydantic-settings / python-dotenv
+- and any OpenAI or Spotify client libraries if used.
+"""
+
