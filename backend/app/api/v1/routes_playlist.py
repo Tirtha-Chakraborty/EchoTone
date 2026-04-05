@@ -44,19 +44,20 @@ async def generate_playlist_mock(payload: TextToPlaylistRequest) -> PlaylistResp
     # - call the Spotify service with the extracted attributes,
     # - and assemble a PlaylistResponse from live data.
 
+    # Use real image URLs so the UI can load album art in dev. (example.com paths are not images.)
     mock_tracks = [
         Track(
             title="Echoes of Dawn",
             artist="Aurora Fields",
             album="First Light",
-            album_art_url="https://example.com/images/echoes-of-dawn.jpg",
+            album_art_url="https://picsum.photos/seed/echotone-album-1/300/300",
             spotify_track_url="https://open.spotify.com/track/mock1",
         ),
         Track(
             title="Midnight Reflections",
             artist="Neon Rivers",
             album="City Lights",
-            album_art_url="https://example.com/images/midnight-reflections.jpg",
+            album_art_url="https://picsum.photos/seed/echotone-album-2/300/300",
             spotify_track_url="https://open.spotify.com/track/mock2",
         ),
     ]
@@ -68,9 +69,9 @@ async def generate_playlist_mock(payload: TextToPlaylistRequest) -> PlaylistResp
     ]
 
     mock_vibe_images = [
-        "https://example.com/wallpapers/soft-neon-skyline.jpg",
-        "https://example.com/wallpapers/moody-bedroom-lights.jpg",
-        "https://example.com/wallpapers/sunrise-over-city.jpg",
+        "https://picsum.photos/seed/echotone-vibe-1/400/711",
+        "https://picsum.photos/seed/echotone-vibe-2/400/711",
+        "https://picsum.photos/seed/echotone-vibe-3/400/711",
     ]
 
     response = PlaylistResponse(
