@@ -1,9 +1,26 @@
-/**
- * Root layout for the EchoTone Next.js app.
- *
- * This file will eventually define:
- * - global HTML structure and metadata,
- * - shared styling (fonts, background, theme),
- * to ensure a clean, mobile-friendly experience across all pages.
- */
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
 
+export const metadata: Metadata = {
+  title: "EchoTone",
+  description: "Turn how you feel into a playlist.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0c0e12",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}

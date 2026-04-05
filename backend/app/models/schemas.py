@@ -3,7 +3,7 @@ Pydantic models (schemas) for the EchoTone backend.
 
 These classes define the **API contract** between the frontend and backend:
 - what the `/generate-playlist` endpoint expects as input,
-- and what shape of data it returns as output.
+- and what shape of data it returns as output..
 """
 
 from typing import List, Optional

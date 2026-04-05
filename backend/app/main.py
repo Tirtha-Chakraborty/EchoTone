@@ -25,6 +25,10 @@ def create_app() -> FastAPI:
     app = FastAPI(title=settings.app_name)
 
     # 1. Configure CORS so the Next.js frontend can call this backend from the browser.
+    #
+    # Browsers forbid allow_origins=["*"] together with allow_credentials=True (the
+    # response is invalid). That combination surfaces in the frontend as fetch()
+    # failing with "Failed to fetch", not a normal HTTP error.
     if settings.backend_cors_origins:
         app.add_middleware(
             CORSMiddleware,
@@ -34,12 +38,16 @@ def create_app() -> FastAPI:
             allow_headers=["*"],
         )
     else:
-        # During early development, it can be convenient to allow all origins.
-        # We can tighten this later when we know the exact frontend URL.
+        # Dev default: common Next.js dev URLs. No cookies needed for this API.
         app.add_middleware(
             CORSMiddleware,
-            allow_origins=["*"],
-            allow_credentials=True,
+            allow_origins=[
+                "http://localhost:3000",
+                "http://127.0.0.1:3000",
+                "http://localhost:3001",
+                "http://127.0.0.1:3001",
+            ],
+            allow_credentials=False,
             allow_methods=["*"],
             allow_headers=["*"],
         )
